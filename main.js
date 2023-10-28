@@ -1,35 +1,25 @@
-function sumar() {
-    var num1 = parseFloat(document.getElementById("num1").value);
-    var num2 = parseFloat(document.getElementById("num2").value);
+// Función para generar un problema aleatorio
+function generateProblem() {
+    let num1 = Math.floor(Math.random() * 10) + 1; // Número aleatorio del 1 al 10
+    let num2 = Math.floor(Math.random() * 10) + 1; // Número aleatorio del 1 al 10
+    let operators = ['+', '-', '*'];
+    let operator = operators[Math.floor(Math.random() * operators.length)]; // Operador aleatorio: suma, resta o multiplicación
 
-    if (num1 >= 0 && num2 >= 0) {
-        var resultado = num1 + num2;
-        document.getElementById("resultado").textContent = resultado;
-    } else {
-        alert("Por favor, ingresa números positivos.");
-    }
+    let problemText = `${num1} ${operator} ${num2}`;
+    document.getElementById('problem').innerText = problemText;
+
+    // Guardar la respuesta correcta en un atributo del elemento #problem
+    document.getElementById('problem').setAttribute('data-answer', eval(problemText));
 }
 
-function restar() {
-    var num1 = parseFloat(document.getElementById("num1").value);
-    var num2 = parseFloat(document.getElementById("num2").value);
+// Función para comprobar la respuesta del usuario
+function checkAnswer() {
+    let userAnswer = parseInt(document.getElementById('answer').value);
+    let correctAnswer = parseInt(document.getElementById('problem').getAttribute('data-answer'));
 
-    if (num1 >= 0 && num2 >= 0) {
-        var resultado = num1 - num2;
-        document.getElementById("resultado").textContent = resultado;
+    if (userAnswer === correctAnswer) {
+        alert('¡Correcto! ¡Bien hecho!');
     } else {
-        alert("Por favor, ingresa números positivos.");
-    }
-}
-
-function multiplicar() {
-    var num1 = parseFloat(document.getElementById("num1").value);
-    var num2 = parseFloat(document.getElementById("num2").value);
-
-    if (num1 >= 0 && num2 >= 0) {
-        var resultado = num1 * num2;
-        document.getElementById("resultado").textContent = resultado;
-    } else {
-        alert("Por favor, ingresa números positivos.");
+        alert('Incorrecto. Inténtalo de nuevo.');
     }
 }
