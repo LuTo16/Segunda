@@ -1,33 +1,35 @@
+function sumar() {
+    var num1 = parseFloat(document.getElementById("num1").value);
+    var num2 = parseFloat(document.getElementById("num2").value);
 
-function generateProblem() {
-    const num1 = Math.floor(Math.random() * 100);
-    const num2 = Math.floor(Math.random() * 100);
-    const operator = Math.random() < 0.5 ? '+' : '-';
-    const problem = `${num1} ${operator} ${num2}`;
-    return {
-        problem: problem,
-        answer: eval(problem) 
-    };
+    if (num1 >= 0 && num2 >= 0) {
+        var resultado = num1 + num2;
+        document.getElementById("resultado").textContent = resultado;
+    } else {
+        alert("Por favor, ingresa números positivos.");
+    }
 }
 
-const problemContainer = document.getElementById('problem');
-const answerInput = document.getElementById('answer');
-const messageElement = document.getElementById('message');
+function restar() {
+    var num1 = parseFloat(document.getElementById("num1").value);
+    var num2 = parseFloat(document.getElementById("num2").value);
 
-
-let currentProblem = generateProblem();
-problemContainer.textContent = `¿Cuánto es ${currentProblem.problem}?`;
-
-
-document.getElementById('submit').addEventListener('click', function() {
-    const userAnswer = parseInt(answerInput.value);
-    if (userAnswer === currentProblem.answer) {
-        messageElement.textContent = '¡Correcto! 🎉';
+    if (num1 >= 0 && num2 >= 0) {
+        var resultado = num1 - num2;
+        document.getElementById("resultado").textContent = resultado;
     } else {
-        messageElement.textContent = 'Incorrecto. Intenta de nuevo.';
+        alert("Por favor, ingresa números positivos.");
     }
-    
-    currentProblem = generateProblem();
-    problemContainer.textContent = `¿Cuánto es ${currentProblem.problem}?`;
-    answerInput.value = ''; 
-});
+}
+
+function multiplicar() {
+    var num1 = parseFloat(document.getElementById("num1").value);
+    var num2 = parseFloat(document.getElementById("num2").value);
+
+    if (num1 >= 0 && num2 >= 0) {
+        var resultado = num1 * num2;
+        document.getElementById("resultado").textContent = resultado;
+    } else {
+        alert("Por favor, ingresa números positivos.");
+    }
+}
